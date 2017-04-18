@@ -56,6 +56,15 @@
 
         <li>
 
+            <a class="apidocElementLiA" href="#apidoc.element.byline.byline">
+            function <span class="apidocSignatureSpan"></span>byline
+            <span class="apidocSignatureSpan">(readStream, options)</span>
+            </a>
+
+        </li>
+
+        <li>
+
             <a class="apidocElementLiA" href="#apidoc.element.byline.LineStream">
             function <span class="apidocSignatureSpan">byline.</span>LineStream
             <span class="apidocSignatureSpan">(options)</span>
@@ -151,10 +160,65 @@
 
     </ol></li>
 
+    <li class="apidocModuleLi"><a href="#apidoc.module.byline.byline">module byline.byline</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.byline.byline.byline">
+            function <span class="apidocSignatureSpan">byline.</span>byline
+            <span class="apidocSignatureSpan">(readStream, options)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.byline.byline.LineStream">
+            function <span class="apidocSignatureSpan">byline.byline.</span>LineStream
+            <span class="apidocSignatureSpan">(options)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.byline.byline.createLineStream">
+            function <span class="apidocSignatureSpan">byline.byline.</span>createLineStream
+            <span class="apidocSignatureSpan">(readStream)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.byline.byline.createStream">
+            function <span class="apidocSignatureSpan">byline.byline.</span>createStream
+            <span class="apidocSignatureSpan">(readStream, options)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
 </ol></div>
 
 <div class="apidocSectionDiv">
 <h1><a href="#apidoc.module.byline" id="apidoc.module.byline">module byline</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.byline.byline" id="apidoc.element.byline.byline">
+        function <span class="apidocSignatureSpan"></span>byline
+        <span class="apidocSignatureSpan">(readStream, options)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">byline = function (readStream, options) {
+  return module.exports.createStream(readStream, options);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
 
 
     <h2>
@@ -445,6 +509,111 @@ stream.on('data', function(line) {
   this._pushBuffer(encoding, 1, done);
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.byline.byline" id="apidoc.module.byline.byline">module byline.byline</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.byline.byline.byline" id="apidoc.element.byline.byline.byline">
+        function <span class="apidocSignatureSpan">byline.</span>byline
+        <span class="apidocSignatureSpan">(readStream, options)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">byline = function (readStream, options) {
+  return module.exports.createStream(readStream, options);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.byline.byline.LineStream" id="apidoc.element.byline.byline.LineStream">
+        function <span class="apidocSignatureSpan">byline.byline.</span>LineStream
+        <span class="apidocSignatureSpan">(options)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function LineStream(options) {
+  stream.Transform.call(this, options);
+  options = options || {};
+
+  // use objectMode to stop the output from being buffered
+  // which re-concatanates the lines, just without newlines.
+  this._readableState.objectMode = true;
+  this._lineBuffer = [];
+  this._keepEmptyLines = options.keepEmptyLines || false;
+  this._lastChunkEndedWithCR = false;
+
+  // take the source's encoding if we don't have one
+  var self = this;
+  this.on('pipe', function(src) {
+    if (!self.encoding) {
+      // but we can't do this for old-style streams
+      if (src instanceof stream.Readable) {
+        self.encoding = src._readableState.encoding;
+      }
+    }
+  });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.byline.byline.createLineStream" id="apidoc.element.byline.byline.createLineStream">
+        function <span class="apidocSignatureSpan">byline.byline.</span>createLineStream
+        <span class="apidocSignatureSpan">(readStream)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">createLineStream = function (readStream) {
+  console.log('WARNING: byline#createLineStream is deprecated and will be removed soon');
+  return createLineStream(readStream);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.byline.byline.createStream" id="apidoc.element.byline.byline.createStream">
+        function <span class="apidocSignatureSpan">byline.byline.</span>createStream
+        <span class="apidocSignatureSpan">(readStream, options)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">createStream = function (readStream, options) {
+  if (readStream) {
+    return createLineStream(readStream, options);
+  } else {
+    return new LineStream(options);
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+You just need to add one line to wrap your readable `Stream` with a `LineStream`.
+
+```javascript
+var fs = require('fs'),	
+    byline = require('byline');
+
+var stream = fs.createReadStream('sample.txt');
+stream = byline.<span class="apidocCodeKeywordSpan">createStream</span>(stream);
+
+stream.on('data', function(line) {
+  console.log(line);
+});
+```
+
+# Piping
+...</pre></li>
     </ul>
 
 
