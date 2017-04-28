@@ -1,6 +1,6 @@
 # npmdoc-byline
 
-#### api documentation for  [byline (v5.0.0)](https://github.com/jahewson/node-byline)  [![npm package](https://img.shields.io/npm/v/npmdoc-byline.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-byline) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-byline.svg)](https://travis-ci.org/npmdoc/node-npmdoc-byline)
+#### basic api documentation for  [byline (v5.0.0)](https://github.com/jahewson/node-byline)  [![npm package](https://img.shields.io/npm/v/npmdoc-byline.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-byline) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-byline.svg)](https://travis-ci.org/npmdoc/node-npmdoc-byline)
 
 #### simple line-by-line stream reader
 
@@ -62,7 +62,8 @@
     "scripts": {
         "test": "mocha -R spec --timeout 60000"
     },
-    "version": "5.0.0"
+    "version": "5.0.0",
+    "bin": {}
 }
 ```
 
